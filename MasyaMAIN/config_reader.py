@@ -17,3 +17,12 @@ class LogRenderer(StrEnum):
 class BotConfig(BaseModel):
     token: SecretStr
     owners: list
+
+
+class LogConfig(BaseModel):
+    show_datetime: bool
+    datetime_format: str
+    show_debug_logs: bool
+    time_in_utc: bool
+    use_colors_in_console: bool
+    renderer: LogRenderer
