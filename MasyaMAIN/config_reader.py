@@ -12,3 +12,8 @@ ConfigType = TypeVar("ConfigType", bound=BaseModel)
 class LogRenderer(StrEnum):
     JSON = auto()
     CONSOLE = auto()
+
+
+class BotConfig(BaseModel):
+    token: SecretStr
+    owners: list
