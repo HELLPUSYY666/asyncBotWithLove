@@ -6,3 +6,9 @@ from typing import Type, TypeVar
 
 from pydantic import BaseModel, SecretStr, field_validator
 
+ConfigType = TypeVar("ConfigType", bound=BaseModel)
+
+
+class LogRenderer(StrEnum):
+    JSON = auto()
+    CONSOLE = auto()
