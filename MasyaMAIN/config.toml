@@ -1,0 +1,19 @@
+[bot]
+token = "7926806957:AAGYR08G7uwzjwmv_DEv4CUZ8QmHltPYpvQ"
+
+owners = []
+#1052986495
+
+[logs]
+show_datetime = true
+
+datetime_format = "%Y-%m-%d %H:%M:%S"
+
+
+show_debug_logs = true
+
+time_in_utc = false
+
+renderer = "console"
+
+use_colors_in_console = true
