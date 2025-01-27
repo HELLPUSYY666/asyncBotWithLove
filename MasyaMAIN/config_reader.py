@@ -35,3 +35,27 @@ class LogConfig(BaseModel):
 
 class Config(BaseModel):
     bot: BotConfig
+
+
+@lru_cache
+def parse_config_file():
+    if environ.get('CONFIG_FILE_PATH') is not None:
+        file_path = environ.get('CONFIG_FILE_PATH')
+    else:
+        file_path = "config.toml"
+
+    if file_path is None:
+        error = "Could not find settings file"
+        raise ValueError(error)
+    with open(file_path, "rb") as file:
+        config_data = load(file)
+    return config_data
+
+
+@lru_cache
+def get_config(model: Type[ConfigType], root_key: str) -> ConfigType:
+    config_dict = parse_config_file()
+    if root_key not in config_dict:
+        error = f"Key {root_key} not found"
+        raise ValueError(error)
+    return model.model_validate(config_dict[root_key])
