@@ -15,4 +15,11 @@ async def main():
 
     bot_config: BotConfig = get_config(model=BotConfig, root_key="bot")
 
+    bot = Bot(
+        token=bot_config.token.get_secret_value(),  # get token as secret, so it will be hidden in logs
+        default=DefaultBotProperties(
+            parse_mode=ParseMode.HTML  # ParseMode (HTML or MARKDOWN_V2 is preferable)
+        )
+    )
+
 
