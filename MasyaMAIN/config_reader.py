@@ -26,3 +26,12 @@ class LogConfig(BaseModel):
     time_in_utc: bool
     use_colors_in_console: bool
     renderer: LogRenderer
+
+
+    @field_validator("renderer", mode='before')
+    @classmethod
+    def log_renderer_to_lower(cls, v: str):
+        return v.lower()
+
+class Config(BaseModel):
+    bot: BotConfig
