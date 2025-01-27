@@ -1,4 +1,6 @@
 import structlog
+import logging
+import asyncio
 from aiogram import Bot
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -31,4 +33,6 @@ async def main():
         await bot.session.close()
 
 
-
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    asyncio.run(main())
